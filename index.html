@@ -1,36 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Our Wedding Invitation</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		header {
+			background-color: #f9d7c8;
+			text-align: center;
+			padding: 10px;
+		}
+
+		h1 {
+			font-size: 2.5rem;
+			margin: 0;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.photo-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-gap: 10px;
+			margin-bottom: 20px;
+		}
+
+		.photo-grid img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.map img {
+			max-width: 100%;
+			height: auto;
+			margin-top: 20px;
+		}
+	</style>
+</head>
 <body>
-    <img src="" id="mainImage" alt=" 턱시도와 웨딩드레스를 입고 정면을 향해 활짝 웃고 있는 사진">
-    <br>
-    <h1>  결혼식에 초대합니다 </h1>
-
-    <p>
-    👨‍🦳🤍👵의 장남   <br>
-    👨‍🦳🤍👵의 장녀  
-    </p>
-    <br>
-    <h2> 초대의 말 </h2>
-
-    <p> 
-    함께할 때에 비로소 깨닫는 사랑임을 <br>
-    영원히 기억하며 살겠습니다. <br>
-    귀한 걸음 해주시어 <br>
-    저희의 첫 시작을 축복해 주세요. <br>
-    </p>
-    <br>
-
-    <div class="grid-container">
-        <img class="grid-item" src="img/thumbnail1.png">
-        <img class="grid-item" src="img/thumbnail2.png">
-        <img class="grid-item" src="img/thumbnail3.png">
-        <img class="grid-item" src="img/thumbnail4.png">
-        <img class="grid-item" src="img/thumbnail5.png">
-        <img class="grid-item" src="img/thumbnail6.png">
-    </div>
-
-    <h2>일시 및 장소</h2>
-    <p>
-        2023년 07월 15일 토요일 오후 4시 50분 <br>
-        디용디용 <br>
-        광명무역센터컨벤션
-    </p>
+	<header>
+		<h1>Our Wedding Invitation</h1>
+	</header>
+	<div class="container">
+		<p>You are cordially invited to celebrate the marriage of John Smith and Jane Doe</p>
+		<p>On Saturday, June 18th, 2023 at 2:00 pm</p>
+		<p>At the beautiful Green Lake Park</p>
+		<div class="photo-grid">
+			<img src="photo1.jpg" alt="Wedding Photo 1">
+			<img src="photo2.jpg" alt="Wedding Photo 2">
+			<img src="photo3.jpg" alt="Wedding Photo 3">
+			<img src="photo4.jpg" alt="Wedding Photo 4">
+			<img src="photo5.jpg" alt="Wedding Photo 5">
+			<img src="photo6.jpg" alt="Wedding Photo 6">
+			<img src="photo7.jpg" alt="Wedding Photo 7">
+			<img src="photo8.jpg" alt="Wedding Photo 8">
+			<img src="photo9.jpg" alt="Wedding Photo 9">
+		 </div>
+		 <div class="map">
+		 	<img src="map.jpg" alt="Wedding Location Map">
+		 </div>
+		 <p>Please RSVP by May 31st to johnandjane@gmail.com</p>
+	</div>
 </body>
+</html>
