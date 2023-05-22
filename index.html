@@ -196,33 +196,43 @@
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		// 사진 크기를 조절하는 함수
+		// 사진 크기 및 간격을 조절하는 함수
 		function adjustPhotoSize() {
 			// 사진 크기를 조절할 요소를 선택합니다.
-			var gridPhotos = document.querySelectorAll('.grid-photos img');
+			var gridPhotos = document.querySelector('.grid-photos');
+			var photos = gridPhotos.querySelectorAll('img');
 			
 			// 스크린 가로 사이즈를 가져옵니다.
 			var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 			
 			// 핸드폰의 경우
 			if (screenWidth <= 767) {
-				// 스크린 가로 사이즈의 1/3로 설정합니다.
-				var photoWidth = Math.floor((screenWidth - 50) / 3);
-				gridPhotos.forEach(function(photo) {
-					photo.style.width = photoWidth + 'px';
+				// grid-photos의 가로 길이를 스크린 가로 사이즈의 1/3로 설정합니다.
+				gridPhotos.style.gridTemplateColumns = "repeat(3, 1fr)";
+				gridPhotos.style.gridGap = "0";
+				
+				// 각 사진의 크기를 조절합니다.
+				photos.forEach(function(photo) {
+					photo.style.width = "calc(100vw / 3)";
+					photo.style.height = "auto";
 				});
 			}
 			// 패드 및 PC의 경우
 			else {
-				// 사진 하나의 크기를 (스크린 가로 사이즈 * 1/2) / 3로 설정합니다.
-				var photoWidth = Math.floor((screenWidth - 50) * 0.5 / 3);
-				gridPhotos.forEach(function(photo) {
-					photo.style.width = photoWidth + 'px';
+				// grid-photos의 가로 길이를 (스크린 가로 사이즈 * 1/2) / 3으로 설정합니다.
+				var photoWidth = Math.floor(screenWidth * 0.5 / 3);
+				gridPhotos.style.gridTemplateColumns = "repeat(auto-fit, minmax(" + photoWidth + "px, 1fr))";
+				gridPhotos.style.gridGap = "10px";
+				
+				// 각 사진의 크기를 조절합니다.
+				photos.forEach(function(photo) {
+					photo.style.width = "100%";
+					photo.style.height = "auto";
 				});
 			}
 		}
 		
-		// 초기화 및 리사이즈 이벤트 시 사진 크기 조절 함수 호출
+		// 초기화 및 리사이즈 이벤트 시 사진 크기 및 간격 조절 함수 호출
 		window.addEventListener('DOMContentLoaded', adjustPhotoSize);
 		window.addEventListener('resize', adjustPhotoSize);
 	</script>
