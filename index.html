@@ -27,7 +27,6 @@
 			margin: 0 auto;
 			padding: 20px;
 			text-align: center;
-			position: relative; /* 추가된 스타일 */
 		}
 
 		.grid-photos {
@@ -47,7 +46,7 @@
 			height: auto;
 			margin-top: 20px;
 		}
-
+		
 		.popup-overlay {
 			position: fixed;
 			top: 0;
@@ -63,7 +62,7 @@
 			pointer-events: none;
 			transition: opacity 0.3s;
 		}
-
+		
 		.popup-content {
 			max-width: 90%;
 			max-height: 90%;
@@ -73,7 +72,7 @@
 			position: relative;
 			text-align: center;
 		}
-
+		
 		.popup-close {
 			position: absolute;
 			top: 10px;
@@ -82,24 +81,34 @@
 			color: #fff;
 			cursor: pointer;
 		}
-
-		/* 추가된 스타일 */
+		
+		.confetti-container {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			pointer-events: none;
+			z-index: 9999;
+		}
+		
 		.confetti {
 			position: absolute;
 			width: 10px;
 			height: 10px;
-			background-color: pink;
+			background-color: #f9d7c8;
 			border-radius: 50%;
 			pointer-events: none;
-			animation: confetti-fall linear infinite;
+			animation: confetti-fall 5s linear infinite;
 		}
-
+		
 		@keyframes confetti-fall {
 			0% {
-				transform: translate3d(0, -100vh, 0);
+				transform: translateY(-100vh) rotate(0deg);
 			}
 			100% {
-				transform: translate3d(0, 100vh, 0);
+				transform: translateY(100vh) rotate(720deg);
 			}
 		}
 	</style>
@@ -108,75 +117,81 @@
 	<header>
 		<h1>Our Wedding Invitation</h1>
 	</header>
-		<!-- 추가된 영역 -->
-	<div class="confetti-container">
-		<div class="confetti">
 	<div class="container">
 		<p>YG와 JW의 결혼식에 초대합니다.</p>
 		<p>2023년 7월 15일 토요일, 오후 4시 50분</p>
-		<p>광명무역센터컨벤션 그랜드볼룸홀</p>
-<div class="grid-photos">
-<img src="photo1.jpg" alt="Wedding Photo 1">
-<img src="photo2.jpg" alt="Wedding Photo 2">
-<img src="photo3.jpg" alt="Wedding Photo 3">
-<img src="photo4.jpg" alt="Wedding Photo 4">
-<img src="photo5.jpg" alt="Wedding Photo 5">
-<img src="photo6.jpg" alt="Wedding Photo 6">
-<img src="photo7.jpg" alt="Wedding Photo 7">
-<img src="photo8.jpg" alt="Wedding Photo 8">
-<img src="photo9.jpg" alt="Wedding Photo 9">
-</div>
-
-			<div id="popup" class="popup-overlay">
-    <div class="popup-content">
-        <span class="popup-close">&times;</span>
-        <img id="popup-image" src="" alt="팝업 사진">
-    </div>
-</div>
-	
-
-	
-	 <div class="map">
-	 	<img src="map.jpg" alt="오시는 길">
-	 </div>
-	 <p>참석 여부는 ~까지 ~로 회신 부탁드립니다.</p>
-</div>
-			</div>
-	</div>
-	</body>
+		<p>광명무역센터컨벤션 그랜드볼룸		홀</p>
+		<div class="grid-photos">
+			<img src="photo1.jpg" alt="Wedding Photo 1">
+			<img src="photo2.jpg" alt="Wedding Photo 2">
+			<img src="photo3.jpg" alt="Wedding Photo 3">
+			<img src="photo4.jpg" alt="Wedding Photo 4">
+			<img src="photo5.jpg" alt="Wedding Photo 5">
+			<img src="photo6.jpg" alt="Wedding Photo 6">
+			<img src="photo7.jpg" alt="Wedding Photo 7">
+			<img src="photo8.jpg" alt="Wedding Photo 8">
+			<img src="photo9.jpg" alt="Wedding Photo 9">
+		</div>
 		
+		<div id="popup" class="popup-overlay">
+			<div class="popup-content">
+				<span class="popup-close">&times;</span>
+				<img id="popup-image" src="" alt="팝업 사진">
+			</div>
+		</div>
+		
+		<div class="map">
+			<img src="map.jpg" alt="오시는 길">
+		</div>
+		<p>참석 여부는 ~까지 ~로 회신 부탁드립니다.</p>
+	</div>
+	
+	<div class="confetti-container">
+		<!-- Confetti particles will be added dynamically here -->
+	</div>
+	
+	<script>
+		// JavaScript 코드를 추가하세요
+		
+		// 사진 팝업 기능을 구현하는 JavaScript 코드
+		var popup = document.getElementById('popup');
+		var popupImage = document.getElementById('popup-image');
+		var popupClose = document.querySelector('.popup-close');
+		var photos = document.querySelectorAll('.grid-photos img');
+		
+		photos.forEach(function(photo) {
+			photo.addEventListener('click', function() {
+				popupImage.src = photo.src;
+				popup.style.opacity = 1;
+				popup.style.pointerEvents = 'auto';
+			});
+		});
+		
+		popupClose.addEventListener('click', function() {
+			popup.style.opacity = 0;
+			popup.style.pointerEvents = 'none';
+		});
+		
+		// Confetti 효과를 생성하는 JavaScript 코드
+		var confettiContainer = document.querySelector('.confetti-container');
+		var confettiColors = ['#f9d7c8', '#f6c2d0', '#f3a9d4', '#ee8fd6', '#e873d7'];
+		
+		function createConfetti() {
+			var confetti = document.createElement('div');
+			confetti.className = 'confetti';
+			confetti.style.left = Math.random() * 100 + '%';
+			confetti.style.animationDuration = Math.random() * 4 + 2 + 's';
+			confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+			
+			confettiContainer.appendChild(confetti);
+			
+			setTimeout(function() {
+				confetti.remove();
+			}, 5000);
+		}
+		
+		setInterval(createConfetti, 100);
+	</script>
+</body>
 </html>
 
-
-<script>
-	// JavaScript 코드를 추가하세요
-    
-	// 사진 팝업 기능을 구현하는 JavaScript 코드
-	var popup = document.getElementById('popup');
-	var popupImage = document.getElementById('popup-image');
-	var popupClose = document.querySelector('.popup-close');
-	var photos = document.querySelectorAll('.grid-photos img');
-	
-	photos.forEach(function(photo) {
-		photo.addEventListener('click', function() {
-			popupImage.src = photo.src;
-			popup.style.opacity = 1;
-			popup.style.pointerEvents = 'auto';
-		});
-	});
-	
-	popupClose.addEventListener('click', function() {
-		popup.style.opacity = 0;
-		popup.style.pointerEvents = 'none';
-	});
-	
-	// 컨페티 뿌리기 기능을 구현하는 JavaScript 코드
-	function createConfetti() {
-		var confettiContainer = document.querySelector('.confetti-container');
-		var confetti = document.createElement('div');
-		confetti.className = 'confetti';
-		confettiContainer.appendChild(confetti);
-	}
-	
-	setInterval(createConfetti, 200); // 매 200ms마다 컨페티 생성
-</script>
