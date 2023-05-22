@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +27,7 @@
 			margin: 0 auto;
 			padding: 20px;
 			text-align: center;
+			position: relative; /* 추가된 부분 */
 		}
 
 		.grid-photos {
@@ -47,108 +47,68 @@
 			height: auto;
 			margin-top: 20px;
 		}
-		
-		        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-        
-        .popup-content {
-            max-width: 90%;
-            max-height: 90%;
-            overflow: auto;
-            background-color: #fff;
-            padding: 20px;
-            position: relative;
-            text-align: center;
-        }
-        
-        .popup-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            color: #fff;
-            cursor: pointer;
-        }
-        
-        #map {
-            width: 100%;
-            height: 300px;
-            margin-top: 20px;
-        }
-        
-        .hidden-layer {
-            position: relative;
-            display: none;
-            margin-top: 20px;
-        }
-        
-        .hidden-layer.show {
-            display: block;
-        }
-        
-        .arrow {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #000;
-            transform: rotate(45deg);
-            cursor: pointer;
-        }
-        
-        #groom-arrow {
-            bottom: 0;
-            left: 50%;
-            margin-left: -10px;
-        }
-        
-        #bride-arrow {
-            top: 0;
-            left: 50%;
-            margin-left: -10px;
-        }
-		
-	 .confetti-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 9999;
-        }
-        
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #fbcde4;
-            pointer-events: none;
-            transform: rotate(45deg);
-            animation: confetti-fall 3s ease-in-out infinite;
-        }
-        
-        @keyframes confetti-fall {
-            0% {
-                transform: rotate(45deg) translate3d(0, -100%, 0);
-            }
-            100% {
-                transform: rotate(45deg) translate3d(0, 100vh, 0);
-            }
-        }
+
+		.popup-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 999;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.3s;
+		}
+
+		.popup-content {
+			max-width: 90%;
+			max-height: 90%;
+			overflow: auto;
+			background-color: #fff;
+			padding: 20px;
+			position: relative;
+			text-align: center;
+		}
+
+		.popup-close {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			font-size: 24px;
+			color: #fff;
+			cursor: pointer;
+		}
+
+		/* 추가된 부분 */
+		.confetti {
+			position: absolute;
+			width: 10px;
+			height: 10px;
+			background-color: #fbcde4;
+			border-radius: 50%;
+			pointer-events: none;
+			transform: rotate(45deg);
+			opacity: 0;
+			animation: confetti-fall 10s linear infinite;
+		}
+
+		@keyframes confetti-fall {
+			0% {
+				transform: translate3d(0, -100%, 0) rotate(0);
+				opacity: 0;
+			}
+			50% {
+				opacity: 1;
+			}
+			100% {
+				transform: translate3d(0, 100vh, 0) rotate(720deg);
+				opacity: 0;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -158,7 +118,7 @@
 	<div class="container">
 		<p>YG와 JW의 결혼식에 초대합니다.</p>
 		<p>2023년 7월 15일 토요일, 오후 4시 50분</p>
-		<p>광뭉무역센터컨벤션 그랜드볼룸 홀</p>
+		<p>광무역센터컨벤션 그랜드볼룸 홀</p>
 		<div class="grid-photos">
 			<img src="photo1.jpg" alt="Wedding Photo 1">
 			<img src="photo2.jpg" alt="Wedding Photo 2">
@@ -169,320 +129,58 @@
 			<img src="photo7.jpg" alt="Wedding Photo 7">
 			<img src="photo8.jpg" alt="Wedding Photo 8">
 			<img src="photo9.jpg" alt="Wedding Photo 9">
-		 </div>
-		
+		</div>
+
 		<div id="popup" class="popup-overlay">
-        <div class="popup-content">
-            <span class="popup-close">&times;</span>
-            <img id="popup-image" src="" alt="팝업 사진">
-        </div>
-    </div>
-		
-		
-		
-		 <div class="map">
-		 	<img src="map.jpg" alt="오시는 길">
-		 </div>
-		 <p>참석 여부는 ~까지 ~로 회신 부탁드립니다.</p>
+			<div class="popup-content">
+				<span class="popup-close">&times;</span>
+				<img id="popup-image" src="" alt="팝업 사진">
+			</div>
+		</div>
+
+		<div class="map">
+			<img src="map.jpg" alt="오시는 길">
+		</div>
+		<p>참석 여부는 ~까지 ~로 회신 부탁드립니다.</p>
 	</div>
-	
-	
+
+	<!-- 추가된 부분 -->
+	<div class="confetti"></div>
 	<script>
-		
-        // JavaScript 코드를 추가하세요
-        
-        // 사진 팝업 기능을 구현하는 JavaScript 코드
-        var popup = document.getElementById('popup');
-        var popupImage = document.getElementById('popup-image');
-        var popupClose = document.querySelector('.popup-close');
-        var photos = document.querySelectorAll('.grid-photos img');
-        
-        photos.forEach(function(photo) {
-            photo.addEventListener('click', function() {
-                popupImage.src = photo.src;
-                popup.style.opacity = 1;
-                popup.style.pointerEvents = 'auto';
-            });
-        });
-        
-        popupClose.addEventListener('click', function() {
-            popup.style.opacity = 0;
-            popup.style.pointerEvents = 'none';
-        });
-        
-		
-		
-		
-	        // 꽃잎 컨페티 효과를 구현하는 JavaScript 코드
-        var confettiContainer = document.querySelector('.confetti-container');
-        
-        function createConfetti() {
-            var confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confettiContainer.appendChild(confetti);
-            setTimeout(function() {
-                confetti.remove();
-            }, 3000);
-        }
-        
-        setInterval(createConfetti, 200);
-    </script>
+		// JavaScript 코드를 추가하세요
+
+		// 사진 팝업 기능을 구현하는 JavaScript 코드
+		var popup = document.getElementById('popup');
+		var popupImage = document.getElementById('popup-image');
+		var popupClose = document.querySelector('.popup-close');
+		var photos = document.querySelectorAll('.grid-photos img');
+
+		photos.forEach(function(photo) {
+			photo.addEventListener('click', function() {
+				popupImage.src = photo.src;
+				popup.style.opacity = 1;
+				popup.style.pointerEvents = 'auto';
+			});
+		});
+
+		popupClose.addEventListener('click', function() {
+			popup.style.opacity = 0;
+			popup.style.pointerEvents = 'none';
+		});
+
+		// 추가된 부분
+		function createConfetti() {
+			var confetti = document.createElement('div');
+			confetti.classList.add('confetti');
+			confetti.style.left = Math.random() * window.innerWidth + 'px';
+			document.body.appendChild(confetti);
+
+			setTimeout(function() {
+				confetti.remove();
+			}, 10000);
+		}
+
+		setInterval(createConfetti, 200);
+	</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-<!--
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>청첩장</title>
-    <style>
-        /* 청첩장 스타일을 추가하세요 */
-        body {
-            font-family: Arial, sans-serif;
-        }
-        
-        h1 {
-            text-align: center;
-        }
-        
-        .cover-photo {
-            width: 100%;
-        }
-        
-        .grid-photos {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .grid-photos img {
-            width: 100%;
-            cursor: pointer;
-        }
-        
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-        
-        .popup-content {
-            max-width: 90%;
-            max-height: 90%;
-            overflow: auto;
-            background-color: #fff;
-            padding: 20px;
-            position: relative;
-            text-align: center;
-        }
-        
-        .popup-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            color: #fff;
-            cursor: pointer;
-        }
-        
-        #map {
-            width: 100%;
-            height: 300px;
-            margin-top: 20px;
-        }
-        
-        .hidden-layer {
-            position: relative;
-            display: none;
-            margin-top: 20px;
-        }
-        
-        .hidden-layer.show {
-            display: block;
-        }
-        
-        .arrow {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #000;
-            transform: rotate(45deg);
-            cursor: pointer;
-        }
-        
-        #groom-arrow {
-            bottom: 0;
-            left: 50%;
-            margin-left: -10px;
-        }
-        
-        #bride-arrow {
-            top: 0;
-            left: 50%;
-            margin-left: -10px;
-        }
-        
-        .confetti-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 9999;
-        }
-        
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #fbcde4;
-            pointer-events: none;
-            transform: rotate(45deg);
-            animation: confetti-fall 3s ease-in-out infinite;
-        }
-        
-        @keyframes confetti-fall {
-            0% {
-                transform: rotate(45deg) translate3d(0, -100%, 0);
-            }
-            100% {
-                transform: rotate(45deg) translate3d(0, 100vh, 0);
-            }
-        }
-    </style>
-</head>
-<body>
-    <h1>청첩장</h1>
-    
-    <div class="cover-photo">
-        <img src="대문사진.jpg" alt="대문 사진">
-    </div>
-    
-    <div class="grid-photos">
-        <img src="사진1.jpg" alt="사진 1">
-        <img src="사진2.jpg" alt="사진 2"> 
--->
-        <!-- 나머지 사진들 추가 --> 
-
-<!--
-    </div>
-    
-    <div id="popup" class="popup-overlay">
-        <div class="popup-content">
-            <span class="popup-close">&times;</span>
-            <img id="popup-image" src="" alt="팝업 사진">
-        </div>
-    </div>
-    
-    <div id="map"></div>
-    
-    <div class="hidden-layer" id="groom-layer">
-        <div id="groom-arrow" class="arrow"></div>
-        <div id="groom-account">
-            신랑 계좌번호: 1234-5678-9012
-        </div>
-    </div>
-    
-    <div class="hidden-layer" id="bride-layer">
-        <div id="bride-arrow" class="arrow"></div>
-        <div id="bride-account">
-            신부 계좌번호: 9876-5432-1098
-        </div>
-    </div>
-    
-    <div class="confetti-container"></div>
-    
-    <script>
-        // JavaScript 코드를 추가하세요
-        
-        // 사진 팝업 기능을 구현하는 JavaScript 코드
-        var popup = document.getElementById('popup');
-        var popupImage = document.getElementById('popup-image');
-        var popupClose = document.querySelector('.popup-close');
-        var photos = document.querySelectorAll('.grid-photos img');
-        
-        photos.forEach(function(photo) {
-            photo.addEventListener('click', function() {
-                popupImage.src = photo.src;
-                popup.style.opacity = 1;
-                popup.style.pointerEvents = 'auto';
-            });
-        });
-        
-        popupClose.addEventListener('click', function() {
-            popup.style.opacity = 0;
-            popup.style.pointerEvents = 'none';
-        });
-        
-        // 네이버 지도 API를 사용하여 예식장 지도 표시하는 JavaScript 코드
-        function initMap() {
-            var mapOptions = {
-                center: new naver.maps.LatLng(37.12345, 127.56789), // 예시 좌표값 (   
-		    zoom: 15
-            };
-            
-            var map = new naver.maps.Map('map', mapOptions);
-            
-            // 예식장 위치 마커 추가
-            var marker = new naver.maps.Marker({
-                position: new naver.maps.LatLng(37.12345, 127.56789), // 예시 좌표값
-                map: map
-            });
-        }
-        
-        // 신랑측과 신부측 계좌번호 레이어 표시/숨김을 위한 JavaScript 코드
-        var groomArrow = document.getElementById('groom-arrow');
-        var groomLayer = document.getElementById('groom-layer');
-        var brideArrow = document.getElementById('bride-arrow');
-        var brideLayer = document.getElementById('bride-layer');
-        
-        groomArrow.addEventListener('click', function() {
-            groomLayer.classList.toggle('show');
-        });
-        
-        brideArrow.addEventListener('click', function() {
-            brideLayer.classList.toggle('show');
-        });
-        
-        // 꽃잎 컨페티 효과를 구현하는 JavaScript 코드
-        var confettiContainer = document.querySelector('.confetti-container');
-        
-        function createConfetti() {
-            var confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confettiContainer.appendChild(confetti);
-            setTimeout(function() {
-                confetti.remove();
-            }, 3000);
-        }
-        
-        setInterval(createConfetti, 200);
-    </script>
-</body>
-</html>
-
--->
