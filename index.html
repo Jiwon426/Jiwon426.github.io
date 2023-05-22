@@ -153,23 +153,32 @@
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////
 	// 사진 팝업 기능을 구현하는 JavaScript 코드
-	var popup = document.getElementById('popup');
-	var popupImage = document.getElementById('popup-image');
-	var popupClose = document.querySelector('.popup-close');
-	var photos = document.querySelectorAll('.grid-photos img');
-	
-	photos.forEach(function(photo) {
-		photo.addEventListener('click', function() {
-			popupImage.src = photo.src;
-			popup.style.opacity = 1;
-			popup.style.pointerEvents = 'auto';
+		var popup = document.getElementById('popup');
+		var popupImage = document.getElementById('popup-image');
+		var popupClose = document.querySelector('.popup-close');
+		var photos = document.querySelectorAll('.grid-photos img');
+		
+		photos.forEach(function(photo) {
+			photo.addEventListener('click', function() {
+				popupImage.src = photo.src;
+				popup.style.opacity = 1;
+				popup.style.pointerEvents = 'auto';
+				
+				if (window.innerWidth > 768) { // PC 또는 태블릿
+					popupContent.style.maxWidth = '33.33%';
+					popupContent.style.maxHeight = '50%';
+				} else { // 모바일
+					var screenWidth = window.innerWidth - 40;
+					popupContent.style.maxWidth = screenWidth + 'px';
+					popupContent.style.maxHeight = 'none';
+				}
+			});
 		});
-	});
-	
-	popupClose.addEventListener('click', function() {
-		popup.style.opacity = 0;
-		popup.style.pointerEvents = 'none';
-	});
+		
+		popupClose.addEventListener('click', function() {
+			popup.style.opacity = 0;
+			popup.style.pointerEvents = 'none';
+		});
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////
 	// Confetti 효과를 생성하는 JavaScript 코드
