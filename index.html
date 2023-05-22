@@ -48,7 +48,79 @@
 			margin-top: 20px;
 		}
 		
-		   .confetti-container {
+		        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .popup-content {
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+            background-color: #fff;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        #map {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+        }
+        
+        .hidden-layer {
+            position: relative;
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .hidden-layer.show {
+            display: block;
+        }
+        
+        .arrow {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+            transform: rotate(45deg);
+            cursor: pointer;
+        }
+        
+        #groom-arrow {
+            bottom: 0;
+            left: 50%;
+            margin-left: -10px;
+        }
+        
+        #bride-arrow {
+            top: 0;
+            left: 50%;
+            margin-left: -10px;
+        }
+		
+	 .confetti-container {
             position: fixed;
             top: 0;
             left: 0;
