@@ -196,6 +196,7 @@
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
+		
 		// 사진 크기 및 간격을 조절하는 함수
 		function adjustPhotoSize() {
 			// 사진 크기를 조절할 요소를 선택합니다.
@@ -207,13 +208,14 @@
 			
 			// 핸드폰의 경우
 			if (screenWidth <= 767) {
-				// grid-photos의 가로 길이를 스크린 가로 사이즈의 1/3로 설정합니다.
-				gridPhotos.style.gridTemplateColumns = "repeat(3, 1fr)";
-				gridPhotos.style.gridGap = "5";
+				// grid-photos의 가로 길이를 스크린 가로 사이즈에서 양 사이드 패딩 20을 제외한 값으로 설정합니다.
+				var gridWidth = screenWidth - 40; // 양 사이드 패딩 20
+				gridPhotos.style.gridTemplateColumns = "20px repeat(3, calc((100% - 40px) / 3)) 20px";
+				gridPhotos.style.overflowX = "hidden"; // 가로 스크롤 숨김 처리
 				
 				// 각 사진의 크기를 조절합니다.
 				photos.forEach(function(photo) {
-					photo.style.width = "calc((100vw / 3)-5)";
+					photo.style.width = "100%";
 					photo.style.height = "auto";
 				});
 			}
@@ -222,7 +224,7 @@
 				// grid-photos의 가로 길이를 (스크린 가로 사이즈 * 1/2) / 3으로 설정합니다.
 				var photoWidth = Math.floor(screenWidth * 0.5 / 3);
 				gridPhotos.style.gridTemplateColumns = "repeat(auto-fit, minmax(" + photoWidth + "px, 1fr))";
-				gridPhotos.style.gridGap = "10px";
+				gridPhotos.style.overflowX = "hidden"; // 가로 스크롤 숨김 처리
 				
 				// 각 사진의 크기를 조절합니다.
 				photos.forEach(function(photo) {
