@@ -170,6 +170,16 @@
 			<img src="photo8.jpg" alt="Wedding Photo 8">
 			<img src="photo9.jpg" alt="Wedding Photo 9">
 		 </div>
+		
+		<div id="popup" class="popup-overlay">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <img id="popup-image" src="" alt="팝업 사진">
+        </div>
+    </div>
+		
+		
+		
 		 <div class="map">
 		 	<img src="map.jpg" alt="오시는 길">
 		 </div>
@@ -178,6 +188,31 @@
 	
 	
 	<script>
+		
+        // JavaScript 코드를 추가하세요
+        
+        // 사진 팝업 기능을 구현하는 JavaScript 코드
+        var popup = document.getElementById('popup');
+        var popupImage = document.getElementById('popup-image');
+        var popupClose = document.querySelector('.popup-close');
+        var photos = document.querySelectorAll('.grid-photos img');
+        
+        photos.forEach(function(photo) {
+            photo.addEventListener('click', function() {
+                popupImage.src = photo.src;
+                popup.style.opacity = 1;
+                popup.style.pointerEvents = 'auto';
+            });
+        });
+        
+        popupClose.addEventListener('click', function() {
+            popup.style.opacity = 0;
+            popup.style.pointerEvents = 'none';
+        });
+        
+		
+		
+		
 	        // 꽃잎 컨페티 효과를 구현하는 JavaScript 코드
         var confettiContainer = document.querySelector('.confetti-container');
         
