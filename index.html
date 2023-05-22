@@ -153,6 +153,7 @@
 	<script>
 		// JavaScript 코드를 추가하세요
 		
+		//////////////////////////////////////////////////////////////////////////////////////////////
 		// 사진 팝업 기능을 구현하는 JavaScript 코드
 		var popup = document.getElementById('popup');
 		var popupImage = document.getElementById('popup-image');
@@ -172,6 +173,7 @@
 			popup.style.pointerEvents = 'none';
 		});
 		
+		//////////////////////////////////////////////////////////////////////////////////////////////
 		// Confetti 효과를 생성하는 JavaScript 코드
 		var confettiContainer = document.querySelector('.confetti-container');
 		var confettiColors = ['#f9d7c8', '#f6c2d0', '#f3a9d4', '#ee8fd6', '#e873d7'];
@@ -191,6 +193,38 @@
 		}
 		
 		setInterval(createConfetti, 300);
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		// 사진 크기를 조절하는 함수
+		function adjustPhotoSize() {
+			// 사진 크기를 조절할 요소를 선택합니다.
+			var gridPhotos = document.querySelectorAll('.grid-photos img');
+			
+			// 스크린 가로 사이즈를 가져옵니다.
+			var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+			
+			// 핸드폰의 경우
+			if (screenWidth <= 767) {
+				// 스크린 가로 사이즈의 1/3로 설정합니다.
+				var photoWidth = Math.floor(screenWidth / 3);
+				gridPhotos.forEach(function(photo) {
+					photo.style.width = photoWidth + 'px';
+				});
+			}
+			// 패드 및 PC의 경우
+			else {
+				// 사진 하나의 크기를 (스크린 가로 사이즈 * 1/2) / 3로 설정합니다.
+				var photoWidth = Math.floor(screenWidth * 0.5 / 3);
+				gridPhotos.forEach(function(photo) {
+					photo.style.width = photoWidth + 'px';
+				});
+			}
+		}
+		
+		// 초기화 및 리사이즈 이벤트 시 사진 크기 조절 함수 호출
+		window.addEventListener('DOMContentLoaded', adjustPhotoSize);
+		window.addEventListener('resize', adjustPhotoSize);
 	</script>
 </body>
 </html>
