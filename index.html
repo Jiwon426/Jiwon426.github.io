@@ -196,7 +196,6 @@
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		
 		// 사진 크기 및 간격을 조절하는 함수
 		function adjustPhotoSize() {
 			// 사진 크기를 조절할 요소를 선택합니다.
@@ -223,7 +222,7 @@
 			else {
 				// grid-photos의 가로 길이를 (스크린 가로 사이즈 * 1/2) / 3으로 설정합니다.
 				var photoWidth = Math.floor(screenWidth * 0.5 / 3);
-				gridPhotos.style.gridTemplateColumns = "repeat(auto-fit, minmax(" + photoWidth + "px, 1fr))";
+				gridPhotos.style.gridTemplateColumns = "20px repeat(3, " + photoWidth + "px) 20px";
 				gridPhotos.style.overflowX = "hidden"; // 가로 스크롤 숨김 처리
 				
 				// 각 사진의 크기를 조절합니다.
@@ -233,10 +232,10 @@
 				});
 			}
 		}
-		
 		// 초기화 및 리사이즈 이벤트 시 사진 크기 및 간격 조절 함수 호출
 		window.addEventListener('DOMContentLoaded', adjustPhotoSize);
 		window.addEventListener('resize', adjustPhotoSize);
+		adjustPhotoSize(); // 페이지 로딩 시점에도 사진 크기 및 간격 조절 함수 호출
 	</script>
 </body>
 </html>
