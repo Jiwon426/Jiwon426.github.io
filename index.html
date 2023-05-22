@@ -209,11 +209,11 @@
 			if (screenWidth <= 767) {
 				// grid-photos의 가로 길이를 스크린 가로 사이즈의 1/3로 설정합니다.
 				gridPhotos.style.gridTemplateColumns = "repeat(3, 1fr)";
-				gridPhotos.style.gridGap = "0";
+				gridPhotos.style.gridGap = "5";
 				
 				// 각 사진의 크기를 조절합니다.
 				photos.forEach(function(photo) {
-					photo.style.width = "calc(100vw / 3)";
+					photo.style.width = "calc((100vw / 3)-5)";
 					photo.style.height = "auto";
 				});
 			}
