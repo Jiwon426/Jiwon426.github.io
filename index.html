@@ -168,19 +168,19 @@
 			popup.style.pointerEvents = 'none';
 		});
 
-		// 추가된 부분
 		function createConfetti() {
-			var confetti = document.createElement('div');
-			confetti.classList.add('confetti');
-			confetti.style.left = Math.random() * window.innerWidth + 'px';
-			document.body.appendChild(confetti);
+		var confetti = document.createElement('div');
+		confetti.classList.add('confetti');
+		confetti.style.left = Math.random() * window.innerWidth + 'px';
+		confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+		container.appendChild(confetti);
 
-			setTimeout(function() {
-				confetti.remove();
-			}, 10000);
-		}
+		setTimeout(function() {
+			confetti.remove();
+		}, 5000);
+	}
 
-		setInterval(createConfetti, 200);
+	setInterval(createConfetti, 500);
 	</script>
 </body>
 </html>
