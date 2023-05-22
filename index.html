@@ -180,7 +180,7 @@
 			var confetti = document.createElement('div');
 			confetti.className = 'confetti';
 			confetti.style.left = Math.random() * 100 + '%';
-			confetti.style.animationDuration = Math.random() * 4 + 2 + 's';
+			confetti.style.animationDuration = Math.random() * 8 + 4 + 's'; //애니메이션 지속 시간이 4~12초 사이
 			confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
 			
 			confettiContainer.appendChild(confetti);
