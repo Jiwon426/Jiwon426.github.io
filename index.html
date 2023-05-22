@@ -1,4 +1,4 @@
-<!--
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,9 +73,26 @@
 		 </div>
 		 <p>참석 여부는 ~까지 ~로 회신 부탁드립니다.</p>
 	</div>
+	
+	
+	<script>
+	        // 꽃잎 컨페티 효과를 구현하는 JavaScript 코드
+        var confettiContainer = document.querySelector('.confetti-container');
+        
+        function createConfetti() {
+            var confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confettiContainer.appendChild(confetti);
+            setTimeout(function() {
+                confetti.remove();
+            }, 3000);
+        }
+        
+        setInterval(createConfetti, 200);
+    </script>
 </body>
 </html>
--->
 
 
 
@@ -84,6 +101,7 @@
 
 
 
+<!--
 
 <!DOCTYPE html>
 <html>
@@ -327,4 +345,4 @@
 </body>
 </html>
 
-
+-->
