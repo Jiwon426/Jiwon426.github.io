@@ -173,6 +173,13 @@
 
 <script>
 	// JavaScript 코드를 추가하세요
+	var popupImages = document.querySelectorAll('.popup-image');
+popupImages.forEach(function(image) {
+  image.addEventListener('click', function(event) {
+    event.preventDefault();
+  });
+});
+	
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////
 	// 사진 팝업 기능을 구현하는 JavaScript 코드
